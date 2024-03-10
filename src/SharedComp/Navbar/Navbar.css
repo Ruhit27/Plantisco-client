@@ -1,0 +1,10 @@
+.nav li {
+    
+    font-weight: 600;
+    font-size:large;
+}
+
+.nav li :hover{
+    text-decoration:underline;
+    color: green;
+}
