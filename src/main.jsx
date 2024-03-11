@@ -8,28 +8,69 @@ import {
 import Layout from './Layout/Layout.jsx';
 import Home from './HomeComp/Home/Home.jsx';
 import Admin from './Admin/Admin.jsx';
+import ContactUs from './Components/ContactUs/ContactUs.jsx';
+import SecondLayout from './SecondLayout/SecondLayout.jsx';
+import Checkout from './Components/CheckOut/Checkout.jsx';
+import AuthProvider from './AuthProvider/AuthProvider.jsx';
+import Signup from './Authentications/Signup.jsx';
+import AuthLayout from './AuthLayout/AuthLayout.jsx';
+import Login from './Authentications/Login.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout></Layout>,
+    children: [
+      {
+        path: '/',
+        element: <Home></Home>
+      }
+    ]
+  },
+
+  {
+    path: '/contact',
+    element: <SecondLayout></SecondLayout>,
+    children: [
+      {
+        path: '/contact',
+        element: <ContactUs></ContactUs>
+      },
+     
+
+
+    ]
+  },
+  {
+    path: '/auth',
+    element: <AuthLayout></AuthLayout>,
     children:[
       {
-        path:'/',
-        element:<Home></Home>
+        path:'/auth/signup',
+        element:<Signup></Signup>
+      },
+      {
+        path:'/auth/login',
+        element:<Login></Login>
       }
     ]
   },
   {
-    path:'/admin',
-    element:<Admin></Admin>
+    path: '/admin',
+    element: <Admin></Admin>
+  },
+  {
+    path: '/checkout/:id',
+    element: <Checkout></Checkout>
   }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
 
-      <RouterProvider router={router}></RouterProvider>
-   
+   <AuthProvider>
+   <RouterProvider router={router}></RouterProvider>
+   </AuthProvider>
+
   </React.StrictMode>,
 )

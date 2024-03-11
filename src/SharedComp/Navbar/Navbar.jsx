@@ -1,15 +1,17 @@
+import { Link } from "react-router-dom";
 import Banner from "../../HomeComp/Banner/Banner";
 import './Navbar.css'
 const Navbar = () => {
     const nav = () => {
        return <>
-            <li><a>Blogs</a></li>
-            <li><a>Contacts</a></li>
+            <li><a>BLOG</a></li>
+            <li><Link to='/contact'>CONTACT</Link></li>
+        
         </>
     }
     return (
       <div>
-          <div className="navbar md:px-36 py-8 ">
+          <div className="navbar md:px-36 py-8  ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -19,15 +21,18 @@ const Navbar = () => {
                       {nav()}
                     </ul>
                 </div>
-                <a className="  font-semibold text-green-800 font-mono text-3xl  ">PLantiso</a>
+                <Link to='/' className="font-semibold text-green-800 font-mono text-3xl">PLantiso</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className=" font-mono nav menu menu-horizontal px-1">
                 {nav()}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <a className="btn">Button</a>
+            <div className="navbar-end text-green-800 font-semibold">
+                {/* <Link to='/'><FaHome></FaHome></Link> */}
+               <Link className="block" to='/auth/signup'>SIGNUP</Link>
+               <a >/</a>
+               <Link className="block" to='/auth/login'>LOGIN</Link>
             </div>
 
         </div>
