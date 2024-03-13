@@ -15,6 +15,9 @@ import AuthProvider from './AuthProvider/AuthProvider.jsx';
 import Signup from './Authentications/Signup.jsx';
 import AuthLayout from './AuthLayout/AuthLayout.jsx';
 import Login from './Authentications/Login.jsx';
+import PrivateRouter from './privateRouter/PrivateRoute.jsx';
+import Blog from './Components/Blogs/Blog.jsx';
+import Unknown from './404/Unknown.jsx';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +56,7 @@ const router = createBrowserRouter([
         path:'/auth/login',
         element:<Login></Login>
       }
+     
     ]
   },
   {
@@ -60,8 +64,18 @@ const router = createBrowserRouter([
     element: <Admin></Admin>
   },
   {
-    path: '/checkout/:id',
-    element: <Checkout></Checkout>
+    path:'/blog',
+    element:<Blog></Blog>
+  },
+  {
+    path: '/checkout',
+    // path: '/checkout/email',
+    element: <Checkout></Checkout>,
+    loader:()=>fetch(`http://localhost:3000/purchase`)
+  },
+  {
+    path:'*',
+    element:<Unknown></Unknown>
   }
 ]);
 

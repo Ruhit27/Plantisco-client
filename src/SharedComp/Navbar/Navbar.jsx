@@ -1,11 +1,20 @@
 import { Link } from "react-router-dom";
 import Banner from "../../HomeComp/Banner/Banner";
 import './Navbar.css'
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 const Navbar = () => {
-    const nav = () => {
+    const {user,logOut} = useContext(AuthContext)
+    const btnLogout = ()=>{
+        logOut();
+    }
+    const email = user?.email
+    const nav = () => {        
        return <>
-            <li><a>BLOG</a></li>
+            <li><Link to='/blog'>BLOG</Link></li>
             <li><Link to='/contact'>CONTACT</Link></li>
+            <li> <Link to='/checkout'>CHECKOUT</Link> </li>
+            {/* <li> <Link to={`/checkout/${email}`}>CHECKOUT</Link> </li> */}
         
         </>
     }
@@ -30,9 +39,16 @@ const Navbar = () => {
             </div>
             <div className="navbar-end text-green-800 font-semibold">
                 {/* <Link to='/'><FaHome></FaHome></Link> */}
-               <Link className="block" to='/auth/signup'>SIGNUP</Link>
-               <a >/</a>
-               <Link className="block" to='/auth/login'>LOGIN</Link>
+
+                {
+                    user?.email?<Link onClick={btnLogout} className="bg-green-200 p-2 rounded-md hover:bg-green-700 hover:text-white">LOGOUT</Link>: <>
+                     <Link className="" to='/auth/signup'>SIGNUP</Link>
+                    <a >/</a>
+                    <Link className="" to='/auth/login'>LOGIN</Link>
+                    </>
+                   
+                }
+              
             </div>
 
         </div>

@@ -1,12 +1,18 @@
-import { FaHome } from 'react-icons/fa';
+import { useContext } from 'react';
+
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const DifferentNav = () => {
+    const {user,logOut} = useContext(AuthContext)
+    const btnLogout = ()=>{
+        logOut();
+    }
     const nav = () => {
         return <>
-             <li><a>Blogs</a></li>
+             <li><Link to='/blog'>Blogs</Link></li>
              <li><Link to='/contact'>Contacts</Link></li>
-          
+             <li> <Link to='/checkout'>CHECKOUT</Link> </li>
          </>
      }
     return (
@@ -29,10 +35,14 @@ const DifferentNav = () => {
               </ul>
           </div>
           <div className="navbar-end text-green-800 font-semibold">
-                <Link className='mr-4 ' to='/'><FaHome></FaHome></Link>
-               <Link className="block" to='/auth/signup'>SIGNUP</Link>
-               <a >/</a>
-               <Link className="block" to='/auth/login'>LOGIN</Link>
+              {
+                    user?.email?<Link onClick={btnLogout} className="bg-green-200 p-2 rounded-md hover:bg-green-700 hover:text-white">LOGOUT</Link>: <>
+                     <Link className="" to='/auth/signup'>SIGNUP</Link>
+                    <a >/</a>
+                    <Link className="" to='/auth/login'>LOGIN</Link>
+                    </>
+                   
+                }
             </div>
 
 

@@ -1,8 +1,32 @@
 import { Link } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import { useContext } from "react";
+import Swal from "sweetalert2";
 
 const Login = () => {
+    const {login} = useContext(AuthContext);
     const loginBtn =(e)=>{
         e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const pass = form.pass.value;
+        console.log(email,pass);
+        login(email,pass)
+        .then(result=>{
+            const user = result.user;
+            console.log(user)
+            if(user?.email)
+            {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Login Successfully",
+                    showConfirmButton: false,
+                    timer: 1200
+                  });
+            }
+        })
+
     }
     return (
         <div className="hero min-h-[700px] ">
@@ -27,9 +51,9 @@ const Login = () => {
                             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                         </label>
                     </div>
-                    <p className='font-semibold'>Don't have an account? <Link to='/auth/signup' className='text-green-600'>Please Signup</Link> </p>
+                    <p className='font-semibold'>Dont have an account? <Link to='/auth/signup' className='text-green-600'>Please Signup</Link> </p>
                     <div className="form-control mt-6">
-                        <button className="btn btn-primary">SIgnup</button>
+                        <button className="btn btn-primary">Login</button>
                     </div>
                 </form>
             </div>

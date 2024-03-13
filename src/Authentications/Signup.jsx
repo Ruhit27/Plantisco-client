@@ -1,6 +1,7 @@
 import  { useContext } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Signup = () => {
     const {createUser} = useContext(AuthContext);
@@ -15,6 +16,11 @@ const Signup = () => {
        .then(result=>{
         const user = result.user;
         console.log(user)
+        if(user?.email)
+        {
+            Swal.fire("Signup Completed Successfully");
+        }
+
        })
     }
 
