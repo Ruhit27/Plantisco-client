@@ -25,6 +25,7 @@ const Login = () => {
                     timer: 1200
                   });
             }
+            form.reset();
         })
 
     }

@@ -11,9 +11,11 @@ const Navbar = () => {
     const email = user?.email
     const nav = () => {        
        return <>
-            <li><Link to='/blog'>BLOG</Link></li>
+            <li><Link to='/blog'>BLOGS</Link></li>
             <li><Link to='/contact'>CONTACT</Link></li>
-            <li> <Link to='/checkout'>CHECKOUT</Link> </li>
+            {
+                user?.email?<li> <Link to='/checkout'>CHECKOUT</Link> </li>:<></>
+            }
             {/* <li> <Link to={`/checkout/${email}`}>CHECKOUT</Link> </li> */}
         
         </>
@@ -30,7 +32,7 @@ const Navbar = () => {
                       {nav()}
                     </ul>
                 </div>
-                <Link to='/' className="font-semibold text-green-800 font-mono text-3xl">PLantiso</Link>
+                <Link to='/' className="font-semibold text-green-800 font-mono text-3xl">pLantiso</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className=" font-mono nav menu menu-horizontal px-1">

@@ -10,9 +10,11 @@ const DifferentNav = () => {
     }
     const nav = () => {
         return <>
-             <li><Link to='/blog'>Blogs</Link></li>
-             <li><Link to='/contact'>Contacts</Link></li>
-             <li> <Link to='/checkout'>CHECKOUT</Link> </li>
+             <li><Link to='/blog'>BlOGS</Link></li>
+             <li><Link to='/contact'>CONTACT</Link></li>
+             {
+                user?.email?<li> <Link to='/checkout'>CHECKOUT</Link> </li>:<></>
+            }
          </>
      }
     return (
@@ -27,7 +29,7 @@ const DifferentNav = () => {
                     {nav()}
                   </ul>
               </div>
-              <Link to='/' className="font-semibold text-green-800 font-mono text-3xl">PLantiso</Link>
+              <Link to='/' className="font-semibold text-green-800 font-mono text-3xl">pLantiso</Link>
           </div>
           <div className="navbar-center hidden lg:flex">
               <ul className=" font-mono nav menu menu-horizontal px-1">

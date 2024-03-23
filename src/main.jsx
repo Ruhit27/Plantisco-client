@@ -15,7 +15,6 @@ import AuthProvider from './AuthProvider/AuthProvider.jsx';
 import Signup from './Authentications/Signup.jsx';
 import AuthLayout from './AuthLayout/AuthLayout.jsx';
 import Login from './Authentications/Login.jsx';
-import PrivateRouter from './privateRouter/PrivateRoute.jsx';
 import Blog from './Components/Blogs/Blog.jsx';
 import Unknown from './404/Unknown.jsx';
 

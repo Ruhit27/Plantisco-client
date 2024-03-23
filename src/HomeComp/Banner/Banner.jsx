@@ -2,7 +2,7 @@ import img from '../../../Assets/Images/stephanie-harvey-T0inbt7nRME-unsplash-re
 
 const Banner = () => {
     return (
-        <div className='md:flex md:gap-20 md:justify-center md:items-center'>
+        <div className='md:flex md:gap-20 md:justify-center md:items-center '>
             <div>
                 <p className='text-6xl font-semibold font-mono text-green-800'>Uncomplicate Indoor <br /> Gardening</p>
                 <p className='mt-4'>Discover the joy of bringing nature indoors with our curated selection of beautiful and vibrant indoor plants </p>
